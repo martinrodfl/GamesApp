@@ -1,0 +1,106 @@
+.card-body {
+  padding-bottom: 10px;
+  display: flex;
+  width: 300px;
+  max-height: 350px;
+  border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #151515;
+  /* box-shadow: 1px 1px 0px 1px hsla(216, 100%, 34%, 0.489); */
+  z-index: 2;
+}
+
+.card-body:hover {
+  transform: scale(1.05);
+  border-radius: 5px;
+  box-shadow: .1px .1px 30px 1px hsl(0, 0%, 0%);
+  z-index: 1;
+
+  .card-image {
+    border-radius: 5px 5px 0px 0px;
+    background-size: 160%;
+    background-position: center 10%;
+    background-repeat: no-repeat;
+
+  }
+
+  .card-text-button {
+    background: linear-gradient(205deg, rgba(0, 119, 255, 0.815), rgba(255, 0, 0, 0.6));
+    font-weight: 400;
+    box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+  }
+}
+
+.card-texts-titles {
+  display: flex;
+  height: 66px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-number {
+  color: rgba(255, 0, 0, 0.667);
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.separator {
+  width: 12px;
+}
+
+.card-image {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 200px;
+  max-height: 200px;
+  border-radius: 4px 4px 0px 0px;
+  background-size: cover;
+}
+
+.card-texts-div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card-texts-game-title {
+  padding: 10px 0;
+  min-height: 30px;
+}
+
+.card-texts-buttons-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.card-text-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  height: 1.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(205deg, rgb(0, 119, 255), rgb(255, 0, 0));
+  color: rgba(0, 0, 0, 0.82);
+  gap: 3px;
+  letter-spacing: 2px;
+  box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+}
+
+.card-button-icon-star {
+  position: relative;
+  bottom: -2px;
+}
+
+.card-button-icon-bookmark {
+  position: relative;
+  bottom: -3px;
+}

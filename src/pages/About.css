@@ -1,0 +1,46 @@
+.about {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+
+.about-texts {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 0 5px;
+}
+
+.about-paragraph {
+  font-size: 12px;
+  text-align: center;
+}
+
+.about-paragraph>a {
+  color: var(--blue-nacional);
+}
+
+.about-paragraph>a:visited {
+  color: var(--blue-nacional);
+}
+
+@media screen and (width >=1150px) {
+  .about {
+    margin-top: 2rem;
+    align-items: center;
+  }
+
+  .about-texts {
+    width: 50%;
+  }
+
+  .about-paragraph {
+    width: 100%;
+    text-align: left;
+  }
+}

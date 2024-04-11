@@ -1,0 +1,34 @@
+.footer {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 6svh;
+  background-color: var(--blue-nacional);
+}
+
+.footer-texts {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-paragraph {
+  font-size: 12px;
+  text-align: center;
+}
+
+.footer-paragraph>a {
+  color: var(--text-color);
+}
+
+.footer-paragraph>a:visited {
+  color: var(--text-color);
+}
+
+@media screen and (width >=1150px) {
+  .footer {
+    display: flex;
+  }
+}

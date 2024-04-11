@@ -1,0 +1,203 @@
+.game-page {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.game-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5px;
+  gap: 10px;
+}
+
+.game-title {
+  display: flex;
+  width: 95%;
+  justify-content: flex-start;
+}
+
+.game-image-texts-div {
+  padding: 10px;
+}
+
+.game-image {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 5px;
+  background-size: contain;
+}
+
+.game-platform-texts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 5px;
+}
+
+.textos-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.textos-icons {
+  line-height: 2;
+}
+
+.game-platform-div {
+  display: flex;
+  width: 100%;
+  margin: 20px 2px;
+  align-items: center;
+  gap: 1px;
+}
+
+.platforms-title {
+  display: none;
+}
+
+.logo-name {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 48px;
+  height: 43px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.game-platform-logo {
+  display: flex;
+  width: 25px;
+  margin: 1px;
+  font-size: 6px;
+}
+
+.logo-platform-name {
+  font-size: 6px;
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.game-text-enphasis {
+  display: flex;
+  gap: 5px;
+  color: var(--blue-nacional);
+  margin-right: 5px;
+}
+
+.game-description {
+  display: flex;
+  font-size: 12px;
+  text-align: justify;
+  padding: 2px;
+  cursor: pointer;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.game-read-button {
+  background-color: transparent;
+  color: var(--blue-nacional);
+  border: none;
+  font-size: 10px;
+}
+
+.game-read-button:hover {
+  background-color: hsl(216, 100%, 34%);
+  color: var(--text-color);
+}
+
+.hideText {
+  height: 58px;
+  overflow: hidden;
+}
+
+h6>a {
+  color: var(--text-color);
+}
+
+h6>a:visited {
+  color: var(--text-color);
+}
+
+@media screen and (width >=920px) {
+  .game-page {
+    margin-top: 2rem;
+  }
+
+  .game-content {
+    justify-content: flex-start;
+    margin: 0 20px;
+    max-width: 1600px;
+  }
+
+  .game-title {
+    width: 80%;
+    margin-top: 10px;
+    padding-left: 10px;
+  }
+
+  .game-image-texts-div {
+    background-color: #151515;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    width: 80%;
+    height: auto;
+    gap: 15px;
+    padding: 10px;
+    min-height: 65vh;
+  }
+
+  .game-platform-div {
+    flex-direction: column;
+    width: 250px;
+    gap: 20px;
+    align-items: flex-end;
+    margin: 0;
+  }
+
+  .platforms-title {
+    display: flex;
+    width: 100%;
+  }
+
+  .game-platform-texts {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-image-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .game-image {
+    border-radius: 5px;
+    height: 100%;
+    aspect-ratio: 16/9;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .logo-platform-name {
+    font-size: 10px;
+  }
+
+  .logo-name {
+    display: flex;
+    width: 130px;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+}
