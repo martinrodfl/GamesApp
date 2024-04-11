@@ -12,19 +12,19 @@ export const CardList = memo(() => {
     setIsLoading(true);
 
     setError(null);
-    console.log("fetched page: ", page);
+    // console.log("fetched page: ", page);
 
     try {
-      if (page > 10) {
+      if (page > 11) {
         return;
       }
 
       const response = await fetch(
         `https://rawg.io/api/games/lists/popular?discover=
-				true&&page_size=25&page=${page}&key=01de356b02bb4257b02f2c2ca4c78ad6`
+				true&&page_size=24&page=${page}&key=01de356b02bb4257b02f2c2ca4c78ad6`
       );
       const data = await response?.json();
-      // console.log(data);
+      console.log(data);
       if (page === 1) {
         setItems(data?.results);
       } else {
@@ -43,19 +43,6 @@ export const CardList = memo(() => {
     window.scrollTo(0, 0);
     fetchData();
   }, []);
-  // console.log("window.innerHeight", window.innerHeight);
-  // console.log(
-  //   "document.documentElement.scrollTop",
-  //   document.documentElement.scrollTop
-  // );
-  // console.log(
-  //   "window.innerHeight + .scrollTop",
-  //   window.innerHeight + document.documentElement.scrollTop
-  // );
-  // console.log(
-  //   "document.documentElement.offsetHeight",
-  //   document.documentElement.offsetHeight
-  // );
 
   const handleScroll = () => {
     if (
