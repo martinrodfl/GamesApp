@@ -12,9 +12,8 @@
 }
 
 .card-body:hover {
-  transform: scale(1.05);
   border-radius: 5px;
-  box-shadow: .1px .1px 30px 1px hsl(0, 0%, 0%);
+  box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
   z-index: 1;
 
   .card-image {
@@ -28,7 +27,7 @@
   .card-text-button {
     background: linear-gradient(205deg, rgba(0, 119, 255, 0.815), rgba(255, 0, 0, 0.6));
     font-weight: 400;
-    box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+    /* box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%); */
   }
 }
 

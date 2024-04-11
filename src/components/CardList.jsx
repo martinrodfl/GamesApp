@@ -12,6 +12,7 @@ export const CardList = memo(() => {
     setIsLoading(true);
 
     setError(null);
+    console.log("fetched page: ", page);
 
     try {
       if (page > 10) {
@@ -42,16 +43,29 @@ export const CardList = memo(() => {
     window.scrollTo(0, 0);
     fetchData();
   }, []);
+  // console.log("window.innerHeight", window.innerHeight);
+  // console.log(
+  //   "document.documentElement.scrollTop",
+  //   document.documentElement.scrollTop
+  // );
+  // console.log(
+  //   "window.innerHeight + .scrollTop",
+  //   window.innerHeight + document.documentElement.scrollTop
+  // );
+  // console.log(
+  //   "document.documentElement.offsetHeight",
+  //   document.documentElement.offsetHeight
+  // );
 
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight ||
-      isLoading
+      window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight &&
+      !isLoading
     ) {
-      return;
+      console.log("Debe hacer fetch de datos");
+      fetchData();
     }
-    fetchData();
   };
 
   useEffect(() => {
