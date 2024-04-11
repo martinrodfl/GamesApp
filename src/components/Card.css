@@ -13,21 +13,29 @@
 
 .card-body:hover {
   border-radius: 5px;
-  box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+  /* box-shadow: 1px 1px 1px 1px hsl(0, 0%, 0%); */
   z-index: 1;
+  background-color: #000000;
 
   .card-image {
     border-radius: 5px 5px 0px 0px;
-    background-size: 160%;
+    filter: saturate(150%);
+    background-size: 140%;
     background-position: center 10%;
     background-repeat: no-repeat;
+    /* filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.635)) drop-shadow(-1px -1px rgba(1, 1, 1, 0.571)); */
+    /* transform: scale(0.995); */
+  }
 
+  .card-texts-game-title {
+    color: hsl(0, 0%, 100%);
   }
 
   .card-text-button {
-    background: linear-gradient(205deg, rgba(0, 119, 255, 0.815), rgba(255, 0, 0, 0.6));
+    background: linear-gradient(205deg, rgb(0, 119, 255), rgb(255, 0, 0));
     font-weight: 400;
-    /* box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%); */
+    filter: saturate(150%);
+    /* box-shadow: .1px .1px .4px .4px hsl(0, 0%, 100%); */
   }
 }
 
@@ -56,6 +64,7 @@
   max-height: 200px;
   border-radius: 4px 4px 0px 0px;
   background-size: cover;
+  filter: saturate(90%);
 }
 
 .card-texts-div {
@@ -87,7 +96,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background: linear-gradient(205deg, rgb(0, 119, 255), rgb(255, 0, 0));
+  background: linear-gradient(205deg, rgba(0, 119, 255, 0.815), rgba(255, 0, 0, 0.6));
   color: rgba(0, 0, 0, 0.82);
   gap: 3px;
   letter-spacing: 2px;
