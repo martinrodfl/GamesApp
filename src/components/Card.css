@@ -85,14 +85,14 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
+  height: 1.8rem;
 }
 
 .card-text-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 45%;
-  height: 1.8rem;
+  width: 75%;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -101,6 +101,22 @@
   gap: 3px;
   letter-spacing: 2px;
   box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+  line-height: 1.5;
+}
+
+.card-text-button-secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(60deg, rgba(255, 0, 0, 0.6), rgba(0, 119, 255, 0.815));
+  color: rgba(0, 0, 0, 0.82);
+  gap: 3px;
+  box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+  line-height: 1.5;
 }
 
 .card-button-icon-star {
