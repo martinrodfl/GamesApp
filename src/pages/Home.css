@@ -28,7 +28,7 @@
   font-size: 2rem;
   text-shadow: 2px 2px 1px black;
   /* background-color: rgba(0, 0, 0, 0.393); */
-  mask-image: linear-gradient(to top, transparent, black 5%, black 85%, transparent), ;
+  mask-image: linear-gradient(to top, transparent, black 5%, black 85%, transparent);
   text-align: center;
   color: aliceblue;
 }

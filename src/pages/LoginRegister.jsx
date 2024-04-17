@@ -7,8 +7,8 @@ import { IoMdArrowBack } from "react-icons/io";
 import "./LoginRegister.css";
 
 export const LoginRegister = () => {
-  const [email, setEmail] = useState(""); /*correo@correo.com  */
-  const [password, setPassword] = useState(""); /* P@ssw0rd */
+  const [email, setEmail] = useState(""); /*        correo4@correo.com     */
+  const [password, setPassword] = useState(""); /*     P@ssw0rd            */
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
@@ -17,7 +17,7 @@ export const LoginRegister = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const navigate = useNavigate();
 
-  const { userSession, setUserSession } = useContext(UserContext);
+  const { setUserSession, loggedIn, setLoggedIn } = useContext(UserContext);
 
   const loginUser = async () => {
     console.log(email, password);
@@ -49,6 +49,7 @@ export const LoginRegister = () => {
 
       if (dataObject?.status === 200) {
         setUserSession(JSON.parse(data));
+        setLoggedIn(true);
         setTimeout(() => {
           saveSessionStorage("userSession", data);
           navigate("/");
@@ -85,13 +86,12 @@ export const LoginRegister = () => {
       let dataObject = JSON.parse(data);
 
       setStatus(dataObject?.status);
-      console.log("dataObject: ", dataObject);
-      console.log("status: ", dataObject?.status);
       if (dataObject?.status !== 201) {
         setMessage(dataObject?.message);
       }
       if (dataObject?.status === 201) {
         setUserSession(JSON.parse(data));
+        setLoggedIn(true);
         setTimeout(() => {
           saveSessionStorage("userSession", data);
           navigate("/");
@@ -99,6 +99,18 @@ export const LoginRegister = () => {
       }
     } catch (error) {
       console.log("error: ", error);
+    }
+  };
+
+  const handleTabs = () => {
+    const btn2 = document.getElementById("btn-2");
+    const btn1 = document.getElementById("btn-1");
+    if (btn1.checked) {
+      btn1.checked = false;
+      btn2.checked = true;
+    } else {
+      btn2.checked = false;
+      btn1.checked = true;
     }
   };
 
@@ -150,6 +162,11 @@ export const LoginRegister = () => {
                 {" "}
                 Log in
               </button>
+              <div className="not-registered-div">
+                <button onClick={handleTabs} className="not-registered">
+                  Not registered?
+                </button>
+              </div>
               <p>
                 {status === 200 ? (
                   <span className="login-success">Successfully Logged in</span>
@@ -210,6 +227,11 @@ export const LoginRegister = () => {
                 {" "}
                 Register{" "}
               </button>
+              <div className="not-registered-div">
+                <button onClick={handleTabs} className="not-registered">
+                  Back to Login
+                </button>
+              </div>
               <p>
                 {status === 201 ? (
                   <span className="login-success">Successfully Register</span>

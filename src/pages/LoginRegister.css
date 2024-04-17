@@ -146,6 +146,21 @@
   color: rgba(0, 255, 145, 0.596);
 }
 
+.not-registered-div {
+  width: 80%;
+}
+
+.not-registered {
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.not-registered:hover {
+  color: var(--blue-nacional);
+}
+
 
 @media screen and (width >=600px) {
 

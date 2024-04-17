@@ -1,42 +1,32 @@
 .card-body {
-  padding-bottom: 10px;
   display: flex;
   width: 300px;
   max-height: 350px;
   border-radius: 5px;
   flex-direction: column;
   align-items: center;
-  background-color: #151515;
-  /* box-shadow: 1px 1px 0px 1px hsla(216, 100%, 34%, 0.489); */
+  background: linear-gradient(71deg, #080509, #1a171c, #080509);
+  /* background-clip: padding-box; */
   z-index: 2;
 }
 
 .card-body:hover {
   border-radius: 5px;
-  /* box-shadow: 1px 1px 1px 1px hsl(0, 0%, 0%); */
   z-index: 1;
   background-color: #000000;
 
   .card-image {
-    border-radius: 5px 5px 0px 0px;
     filter: saturate(150%);
-    background-size: 140%;
-    background-position: center 10%;
+    background-size: 120%;
+    background-position: 50% 10%;
     background-repeat: no-repeat;
-    /* filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.635)) drop-shadow(-1px -1px rgba(1, 1, 1, 0.571)); */
-    /* transform: scale(0.995); */
+    transition: background-position .5s ease-in-out;
   }
 
   .card-texts-game-title {
     color: hsl(0, 0%, 100%);
   }
 
-  .card-text-button {
-    background: linear-gradient(205deg, rgb(0, 119, 255), rgb(255, 0, 0));
-    font-weight: 400;
-    filter: saturate(150%);
-    /* box-shadow: .1px .1px .4px .4px hsl(0, 0%, 100%); */
-  }
 }
 
 .card-texts-titles {
@@ -73,7 +63,7 @@
   height: 100%;
   justify-content: space-between;
   flex-direction: column;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
 }
 
 .card-texts-game-title {
@@ -100,8 +90,14 @@
   color: rgba(0, 0, 0, 0.82);
   gap: 3px;
   letter-spacing: 2px;
-  box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+  box-shadow: .1px .1px 1px 1px hsla(0, 0%, 0%, 0.427);
   line-height: 1.5;
+}
+
+.card-text-button:hover {
+  background: linear-gradient(205deg, rgb(0, 119, 255), rgb(255, 0, 0));
+  font-weight: 400;
+  filter: saturate(150%);
 }
 
 .card-text-button-secondary {
@@ -112,11 +108,28 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background: linear-gradient(60deg, rgba(255, 0, 0, 0.6), rgba(0, 119, 255, 0.815));
-  color: rgba(0, 0, 0, 0.82);
+  background: #151515;
+  color: rgba(255, 255, 255, 0.744);
   gap: 3px;
-  box-shadow: .1px .1px 1px 1px hsl(0, 0%, 0%);
+  box-shadow: .1px .1px 1px 1px hsla(0, 0%, 0%, 0.41);
   line-height: 1.5;
+}
+
+.card-text-button-secondary:hover {
+  color: rgba(0, 0, 0, 0.82);
+  background: rgba(0, 255, 187, 0.805);
+}
+
+.bokmarked {
+  color: rgb(0, 0, 0);
+  background: rgba(0, 255, 187, 0.805);
+  box-shadow: none;
+}
+
+.bokmarked:hover {
+  color: rgb(255, 255, 255);
+  background: transparent;
+  box-shadow: none;
 }
 
 .card-button-icon-star {
@@ -127,4 +140,23 @@
 .card-button-icon-bookmark {
   position: relative;
   bottom: -3px;
+}
+
+.card-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0;
+  width: 100%;
+  height: 20px;
+}
+
+.deleted {
+  font-size: 10px;
+  color: red;
+}
+
+.saved {
+  font-size: 10px;
+  color: rgba(0, 255, 187, 0.805);
 }

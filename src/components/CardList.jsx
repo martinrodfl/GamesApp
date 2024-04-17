@@ -1,19 +1,27 @@
-import { useEffect, useState, memo } from "react";
+import { useEffect, useState, memo, useContext } from "react";
+import UserContext from "../context/UserContext.jsx";
 import { Card } from "./Card.jsx";
 import "./CardList.css";
 
 export const CardList = memo(() => {
+  const {
+    userSession,
+    setUserSession,
+    loggedIn,
+    setLoggedIn,
+    mygames,
+    setMygames,
+  } = useContext(UserContext);
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
   const [page, setPage] = useState(1);
 
+  //************* TRAER DATA DE JUEGOS API RAWG *************
   const fetchData = async () => {
     setIsLoading(true);
-
     setError(null);
-    // console.log("fetched page: ", page);
-
     try {
       if (page > 11) {
         return;
@@ -24,7 +32,7 @@ export const CardList = memo(() => {
 				true&&page_size=24&page=${page}&key=01de356b02bb4257b02f2c2ca4c78ad6`
       );
       const data = await response?.json();
-      console.log(data);
+      // console.log(data);
       if (page === 1) {
         setItems(data?.results);
       } else {
@@ -38,6 +46,31 @@ export const CardList = memo(() => {
       setIsLoading(false);
     }
   };
+
+  //************* TRAER JUEGOS DE DB *************
+  // const fetchGames = async () => {
+  //   try {
+  //     let headersList = {
+  //       Accept: "*/*",
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${userSession?.token}`,
+  //     };
+
+  //     let response = await fetch(
+  //       `https://localhost:7122/mygames/${userSession?.user.id}`,
+  //       {
+  //         method: "GET",
+  //         headers: headersList,
+  //       }
+  //     );
+
+  //     let data = await response.text();
+  //     let dataObject = JSON.parse(data);
+  //     setMygames(dataObject);
+  //   } catch (error) {
+  //   } finally {
+  //   }
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
