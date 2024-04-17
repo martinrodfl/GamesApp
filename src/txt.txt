@@ -1,0 +1,56 @@
+ 
+ try {
+      if (bookmarked) {
+
+
+        //ELIMINA-------------------------------------------
+        let headersList = {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userSession.token}`,
+        };
+
+        let response = await fetch(
+          `https://localhost:7122/mygames/${userSession?.user.id}/${id}`,
+          {
+            method: "DELETE",
+            headers: headersList,
+          }
+        );
+
+        let data = await response.text();
+        let dataObject = JSON.parse(data);
+        console.log(dataObject);
+        // setBookmarked(true);
+        return;
+      } else {
+
+
+        // CREA-----------------------------------------------
+        let headersList = {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userSession.token}`,
+        };
+
+        let bodyContent = JSON.stringify({
+          userId: userSession?.user.id,
+          gameId: id,
+        });
+
+        let response = await fetch("https://localhost:7122/mygames", {
+          method: "POST",
+          body: bodyContent,
+          headers: headersList,
+        });
+
+        let data = await response.text();
+        let dataObject = JSON.parse(data);
+        console.log(dataObject);
+        setMygames(...mygames, id);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+
+    ----------------------------------------------------------------------------

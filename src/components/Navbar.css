@@ -135,7 +135,7 @@
 
 .nav-link-inner-icon {
     position: relative;
-    top: 2px;
+    top: 1px;
     margin-right: 2px;
     align-items: flex-end;
 }
@@ -250,6 +250,7 @@
     .nav-link-inner-icon {
         line-height: .9;
         margin-right: 3px;
+        top: -1px
     }
 
 
