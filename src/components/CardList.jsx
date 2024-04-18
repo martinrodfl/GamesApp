@@ -1,18 +1,8 @@
-import { useEffect, useState, memo, useContext } from "react";
-import UserContext from "../context/UserContext.jsx";
+import { useEffect, useState, memo } from "react";
 import { Card } from "./Card.jsx";
 import "./CardList.css";
 
 export const CardList = memo(() => {
-  const {
-    userSession,
-    setUserSession,
-    loggedIn,
-    setLoggedIn,
-    mygames,
-    setMygames,
-  } = useContext(UserContext);
-
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [, setError] = useState(null);
@@ -46,31 +36,6 @@ export const CardList = memo(() => {
       setIsLoading(false);
     }
   };
-
-  //************* TRAER JUEGOS DE DB *************
-  // const fetchGames = async () => {
-  //   try {
-  //     let headersList = {
-  //       Accept: "*/*",
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${userSession?.token}`,
-  //     };
-
-  //     let response = await fetch(
-  //       `https://localhost:7122/mygames/${userSession?.user.id}`,
-  //       {
-  //         method: "GET",
-  //         headers: headersList,
-  //       }
-  //     );
-
-  //     let data = await response.text();
-  //     let dataObject = JSON.parse(data);
-  //     setMygames(dataObject);
-  //   } catch (error) {
-  //   } finally {
-  //   }
-  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);

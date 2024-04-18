@@ -7,14 +7,8 @@ import { exists } from "../helpers/exists.js";
 import "./Card.css";
 
 export const Card = ({ id, index, slug, image }) => {
-  const {
-    userSession,
-    setUserSession,
-    loggedIn,
-    setLoggedIn,
-    mygames,
-    setMygames,
-  } = useContext(UserContext);
+  const { userSession, loggedIn, mygames, setMygames } =
+    useContext(UserContext);
 
   const [bookmarked, setBookmarked] = useState(exists(mygames, id));
   const [cardMessage, setCardMessage] = useState("");
@@ -24,7 +18,11 @@ export const Card = ({ id, index, slug, image }) => {
     navigate(`/game/${id}`);
   };
 
-  //************* GUARDA JUEGO EN DB *************
+  const removeGame = (arr, gameId) => {
+    setMygames(arr.filter((ids) => ids !== gameId));
+  };
+
+  //************* SAVE GAME DB *************
   const saveMyGame = async () => {
     console.log("AGREGANDO GAME: ", id, " a ", mygames);
     let headersList = {
@@ -46,12 +44,11 @@ export const Card = ({ id, index, slug, image }) => {
 
     let data = await response.text();
     let dataObject = JSON.parse(data);
-    console.log(dataObject);
-    setMygames([...mygames], id);
+    setMygames((prevMygames) => [...prevMygames, id]);
     setBookmarked(true);
   };
 
-  //************* ELIMINA JUEGO DE DB *************
+  //************* DELETE GAME DB *************
   const deleteGame = async () => {
     let headersList = {
       Accept: "*/*",
@@ -70,23 +67,23 @@ export const Card = ({ id, index, slug, image }) => {
     let data = await response.text();
     let dataObject = JSON.parse(data);
     console.log(dataObject);
-    const updatedGames = mygames.map((id) => id !== id);
-    setMygames(updatedGames);
+    removeGame(mygames, id);
     setBookmarked(false);
   };
 
-  //************* MANEJA GUARDA/ELIMINA *************
+  //************* HANDLE SAVE/DELETE *************
   const handleBookmark = () => {
-    //NO LOGUEADO*****
+    //NOT LOGGED IN*****
     if (!loggedIn) {
       setCardMessage("To save a game you must be logged in");
       setTimeout(() => {
         setCardMessage("");
-      }, 1000);
+      }, 2000);
       return;
     }
-    //LOGUEADO*****
+    //LOGGED IN*****
     if (bookmarked) {
+      //delete
       deleteGame();
       setCardMessage("Game deleted");
       setTimeout(() => {
@@ -94,6 +91,7 @@ export const Card = ({ id, index, slug, image }) => {
       }, 1000);
       return;
     }
+    //save
     saveMyGame();
     setCardMessage("*Game saved");
     setTimeout(() => {

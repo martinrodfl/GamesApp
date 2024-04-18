@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getSessionStorage } from "../helpers/handleSessionStorage";
 import UserContext from "./UserContext";
 
@@ -9,14 +9,11 @@ const UserProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(userSession ? true : false);
   const [mygames, setMygames] = useState([]);
 
-  // console.log("LOGGEDIN: ", loggedIn);
-  // console.log("USERSESSION: ", userSession);
-
-  //************* TRAER JUEGOS DE DB fetchGames() *************
-  const fetchGames = async () => {
+  //************* FETCH GAMES DB  *************
+  const fetchGames = useCallback(async () => {
     try {
       let headersList = {
-        Accept: "*/*",
+        Accept: "*//*",
         "Content-Type": "application/json",
         Authorization: `Bearer ${userSession?.token}`,
       };
@@ -33,15 +30,15 @@ const UserProvider = ({ children }) => {
       let dataObject = JSON.parse(data);
       setMygames(dataObject);
     } catch (error) {
-    } finally {
+      console.log("error en fetchGames() - provider");
     }
-  };
+  }, [userSession?.token, userSession?.user.id]);
 
   useEffect(() => {
     if (userSession?.user) {
       fetchGames();
     }
-  }, []);
+  }, [userSession?.user, fetchGames]);
 
   console.log("MYGAMES-EN-CONTEXT: ", mygames);
 

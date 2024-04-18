@@ -1,56 +1,62 @@
  
- try {
-      if (bookmarked) {
+//************* SAVE GAME DB *************
+  const saveMyGame = async () => {
+    console.log("AGREGANDO GAME: ", id, " a ", mygames);
+    let headersList = {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userSession.token}`,
+    };
 
+    let bodyContent = JSON.stringify({
+      userId: userSession?.user.id,
+      gameId: id,
+    });
 
-        //ELIMINA-------------------------------------------
-        let headersList = {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userSession.token}`,
-        };
+    let response = await fetch("https://localhost:7122/mygames", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    });
 
-        let response = await fetch(
-          `https://localhost:7122/mygames/${userSession?.user.id}/${id}`,
-          {
-            method: "DELETE",
-            headers: headersList,
-          }
-        );
+    let data = await response.text();
+    let dataObject = JSON.parse(data);
+    setMygames([...mygames], id);
+    setBookmarked(true);
+  };
+  
+  console.log("mygames-en-savegame: ", mygames);
 
-        let data = await response.text();
-        let dataObject = JSON.parse(data);
-        console.log(dataObject);
-        // setBookmarked(true);
-        return;
-      } else {
+// ---------------------------------------------------------------------------//
 
+  //************* DELETE GAME DB *************
+  const deleteGame = async () => {
+    let headersList = {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userSession.token}`,
+    };
 
-        // CREA-----------------------------------------------
-        let headersList = {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userSession.token}`,
-        };
-
-        let bodyContent = JSON.stringify({
-          userId: userSession?.user.id,
-          gameId: id,
-        });
-
-        let response = await fetch("https://localhost:7122/mygames", {
-          method: "POST",
-          body: bodyContent,
-          headers: headersList,
-        });
-
-        let data = await response.text();
-        let dataObject = JSON.parse(data);
-        console.log(dataObject);
-        setMygames(...mygames, id);
+    let response = await fetch(
+      `https://localhost:7122/mygames/${userSession?.user.id}/${id}`,
+      {
+        method: "DELETE",
+        headers: headersList,
       }
-    } catch (error) {
-      console.log("error: ", error);
-    }
+    );
 
-    ----------------------------------------------------------------------------
+    let data = await response.text();
+    let dataObject = JSON.parse(data);
+    console.log(dataObject);
+
+    // const updatedGames = mygames.map((id) => id !== id);
+    // const updatedGames = mygames.filter((ids) => ids !== id);
+
+    removeGame(mygames, id);
+
+    // console.log("UPDATE_GAMES: ", updatedGames);
+    // setMygames(updatedGames);
+    setBookmarked(false);
+  };
+
+// ----------------------------------------------------------------------------//
